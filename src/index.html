@@ -38,8 +38,10 @@ limitations under the License. -->
         </div>
       </div>
       <div class="play-button">
-        <button id="start-game" class="mdc-button mdc-button--raised">
-          <a href="play.html?greeting=hello">go to second page</a>
+        <button id="start-game" class="mdc-button mdc-button--raised"
+          onclick="startGame()"
+        > 
+          <p>START</p>
         </button>
       </div>
     </div>
@@ -57,8 +59,8 @@ limitations under the License. -->
     const playerTwoParam = encodeURIComponent(playerTwoName);
 
     // Redirect to play.html with the input values as URL parameters
-    window.location.href = `play.html?playerOne=${playerOneName}&playerTwo=${playerTwoName}`;
-  }
+    window.location.href = `play.html?playerOne=${playerOneParam}&playerTwo=${playerTwoParam}`;
+}
 </script>
 
 </body>

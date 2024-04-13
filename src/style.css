@@ -193,3 +193,25 @@ footer {
   color: white;
   font-size: 18px;
 }
+
+.video-container {
+  display: flex;
+  position: relative;
+  height: 720px;
+  width: 1280px;
+  border: 2px solid #ccc; /* Add a slight border */
+  justify-content: center;
+  align-items: center;
+}
+
+#webcam {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.output_canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}

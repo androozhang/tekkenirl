@@ -28,40 +28,42 @@ limitations under the License. -->
 <body>
   <section id="demos" class="invisible">
     <div id="player-info" class="player-info">
-        <!-- Player 1 name -->
-        <div id="player-one-info" class="player-info-item"></div>
-        <!-- Player 2 name -->
-        <div id="player-two-info" class="player-info-item"></div>
-      </div>
+      <!-- Player 1 name -->
+      <div id="player-one-info" class="player-info-item"></div>
+      <!-- Player 2 name -->
+      <div id="player-two-info" class="player-info-item"></div>
+    </div>
     <div id="liveView" class="videoView">
       <button id="webcamButton" class="mdc-button mdc-button--raised">
         <span class="mdc-button__label">ENABLE WEBCAM</span>
       </button>
-      <div style="position: relative;">
-        <video id="webcam" style="width: 1280px; height: 720px; position: abso" autoplay playsinline></video>
-        <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
+      <div class="video-container">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas class="output_canvas" id="output_canvas"></canvas>
       </div>
     </div>
   </section>
 <!-- partial -->
   <script type="module" src="./script.js"></script>
   <script>
-    // Function to extract parameters from the URL
-    function getParameterByName(name, url) {
-      console.log(name);
-      console.log(url);
-    }
 
     const urlParams = new URLSearchParams(window.location.search);
     console.log("here", window.location.search);
 
-    // Extract playerOne and playerTwo parameters from the URL
-    const playerOne = getParameterByName('playerOne', window.location.href);
-    const playerTwo = getParameterByName('playerTwo', window.location.href);
-
     // Update the HTML content to display playerOne and playerTwo names
-    document.getElementById('player-one-info').innerText = "Player 1: " + playerOne;
-    document.getElementById('player-two-info').innerText = "Player 2: " + playerTwo;
+    document.getElementById('player-one-info').innerText = "Player 1: " + urlParams.get('playerOne');
+    document.getElementById('player-two-info').innerText = "Player 2: " + urlParams.get('playerTwo');
+
+    function startWebcam() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+          const videoElement = document.getElementById('webcam');
+          videoElement.srcObject = stream;
+        })
+        .catch(function(error) {
+          console.error('Error accessing the webcam: ', error);
+        });
+    }
   </script>
 </body>
 </html>
