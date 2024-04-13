@@ -27,22 +27,13 @@ limitations under the License. -->
 
 <body>
   <section id="demos" class="invisible">
-    <div class="start-screen">
-      <h1>Tekken IRL</h1>
-      <div class="player-screen">
-        <div class="player-one">
-          <p>Player 1</p>
-          <input type="text" id="player-one-name" class="player-name" placeholder="Player 1">
-        </div>
-        <div class="player-two">
-          <p>Player 2</p>
-          <input type="text" id="player-two-name" class="player-name" placeholder="Player 2">
-        </div>
-      </div>
-      <div class="play-button">
-        <button id="start-game" class="mdc-button mdc-button--raised">
-          <a href="./play.html">START GAME</a>
-        </button>
+    <div id="liveView" class="videoView">
+      <button id="webcamButton" class="mdc-button mdc-button--raised">
+        <span class="mdc-button__label">ENABLE WEBCAM</span>
+      </button>
+      <div style="position: relative;">
+        <video id="webcam" style="width: 1280px; height: 720px; position: abso" autoplay playsinline></video>
+        <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
       </div>
     </div>
   </section>
