@@ -1,7 +1,7 @@
 
 
 //map for body part to id
-const bodyPartMap = {
+export const bodyPartMap = {
     "nose": 0,
     "left eye (inner)": 1,
     "left eye": 2,
@@ -37,43 +37,43 @@ const bodyPartMap = {
     "right foot index": 32
 };
 
-const rightHand = {
+export const rightHand = {
     label:"RH",
     points:[21, 19, 15, 17],
     lastHit: 0,
 }
 
-const leftHand = {
+export const leftHand = {
     label:"LH",
     points:[22, 20, 18, 16],
     lastHit: 0,
 }
 
-const body = {
+export const body = {
     label:"BD",
     points:[12, 11, 24 , 23],
     lastHit: 0,
 }
 
-const head = {
+export const head = {
     label:"HD",
     points:[0,1,2,3,4,5,6,7,8,9,10],
     lastHit: 0,
 }
 
-const leftLeg = {
+export const leftLeg = {
     label:"LL",
     points:[26,28,32,30],
     lastHit: 0,
 }
 
-const rightLeg = {
+export const rightLeg = {
     label:"RL",
     points:[25,27,29,31],
     lastHit: 0,
 }
 
-function detectAttack(attack, target, attackBody, targetBody){
+export function detectAttack(attack, target, attackBody, targetBody){
     let hit = false;
     for (let i = 0; i < attack.points.length; i++){
         for (let j = 0; j < target.points.length; j++){
@@ -87,7 +87,7 @@ function detectAttack(attack, target, attackBody, targetBody){
         }
     }
 
-    if (!hit || performance.now() < attack.lastHit + .25){
+    if (!hit || performance.now() < attack.lastHit + 1000){
         return 0;
     }
 
@@ -118,32 +118,18 @@ function detectAttack(attack, target, attackBody, targetBody){
     }
 }
 
-function inRange(pt1, pt2, attackBody, targetBody){
-   
-    if(Math.abs(attackBody[pt1].x - targetBody[pt2].x > 0.1)){
+export function inRange(pt1, pt2, attackBody, targetBody) {
+    if (Math.abs(attackBody[pt1].x - targetBody[pt2].x) > 0.025) {
         return false;
     }
 
-    if(Math.abs(attackBody[pt1].y - targetBody[pt2].y > 0.1)){
+    if (Math.abs(attackBody[pt1].y - targetBody[pt2].y) > 0.02) {
         return false;
     }
 
-    if(Math.abs(attackBody[pt1].z - targetBody[pt2].z > 0.1)){
+    if (Math.abs(attackBody[pt1].z - targetBody[pt2].z) > 0.005) {
         return false;
     }
 
     return true;
 }
-
-
-module.exports = {
-    bodyPartMap,
-    rightHand,
-    leftHand,
-    rightLeg,
-    leftLeg,
-    head,
-    body,
-    detectAttack,
-    inRange,
-};
