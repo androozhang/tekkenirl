@@ -120,9 +120,11 @@ footer {
   height: 100vh;
 }
 
-.player-screen {
+.player-info {
   display: flex;
+  width: auto;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .player-one {
@@ -141,6 +143,41 @@ footer {
   height: 100%;
   align-items: center;
   margin: 0 0 0 480px;
+}
+
+#player-one-info {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#player-two-info {
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.player-info-row {
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+#p1-healthbar {
+  width: 100px;
+  height: 20px;
+  background-color: #FF0000;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#p2-healthbar {
+  width: 100px;
+  height: 20px;
+  background-color: #FF0000;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
 }
 
 .play-button {
