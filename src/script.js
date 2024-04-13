@@ -10,6 +10,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+const { bodyPartMap, rightHand, leftHand, body, detectAttack } = require('./bodyparts.js');
 import { PoseLandmarker, FilesetResolver, DrawingUtils } from "https://cdn.skypack.dev/@mediapipe/tasks-vision@0.10.0";
 const demosSection = document.getElementById("demos");
 let poseLandmarker = undefined;
@@ -153,8 +154,8 @@ async function predictWebcam() {
                 drawingUtils.drawLandmarks(landmark, {
                     radius: (data) => DrawingUtils.lerp(data.from.z, -0.15, 0.1, 5, 1)
                 });
+                processHits(landmark);
                 drawingUtils.drawConnectors(landmark, PoseLandmarker.POSE_CONNECTIONS);
-                
             }
             canvasCtx.restore();
         });
@@ -179,3 +180,14 @@ function startGame() {
   }
 
 
+function processHits(landmark){
+    if (landmark.length != 2){
+        return;
+    }
+
+    player1Body = landmark[0];
+    player2Body = landmark[1];
+
+    const result = detectAttack(leftHand, body, player1Body, player2Body);
+    console.log(result);
+}
