@@ -10,6 +10,11 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+<<<<<<< HEAD
+=======
+//const { bodyPartMap, rightHand, leftHand, body, detectAttack } = require('./bodyparts.js');
+
+>>>>>>> 23ecf8958ed817ffbf75a66514c4667f9cbefda9
 import { PoseLandmarker, FilesetResolver, DrawingUtils } from "https://cdn.skypack.dev/@mediapipe/tasks-vision@0.10.0";
 import * as bodyparts from './bodyparts.js';
 const demosSection = document.getElementById("demos");
@@ -166,18 +171,6 @@ async function predictWebcam() {
     }
 }
 
-function startGame() {
-    // Get the input values
-    const playerOneName = document.getElementById('player-one-name').value;
-    const playerTwoName = document.getElementById('player-two-name').value;
-  
-    // Encode the values as URL parameters
-    const playerOneParam = encodeURIComponent(playerOneName);
-    const playerTwoParam = encodeURIComponent(playerTwoName);
-  
-    // Redirect to play.html with the input values as URL parameters
-    window.location.href = `play.html?playerOne=${playerOneParam}&playerTwo=${playerTwoParam}`;
-  }
 
 
 function processHits(landmark){
