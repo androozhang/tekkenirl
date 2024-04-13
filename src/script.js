@@ -154,6 +154,7 @@ async function predictWebcam() {
                     radius: (data) => DrawingUtils.lerp(data.from.z, -0.15, 0.1, 5, 1)
                 });
                 drawingUtils.drawConnectors(landmark, PoseLandmarker.POSE_CONNECTIONS);
+                
             }
             canvasCtx.restore();
         });
@@ -163,3 +164,18 @@ async function predictWebcam() {
         window.requestAnimationFrame(predictWebcam);
     }
 }
+
+function startGame() {
+    // Get the input values
+    const playerOneName = document.getElementById('player-one-name').value;
+    const playerTwoName = document.getElementById('player-two-name').value;
+  
+    // Encode the values as URL parameters
+    const playerOneParam = encodeURIComponent(playerOneName);
+    const playerTwoParam = encodeURIComponent(playerTwoName);
+  
+    // Redirect to play.html with the input values as URL parameters
+    window.location.href = `play.html?playerOne=${playerOneParam}&playerTwo=${playerTwoParam}`;
+  }
+
+

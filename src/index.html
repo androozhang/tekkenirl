@@ -2,8 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - MediaPipe Pose Landmarker Task for web</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>TekkenIRL</title>
 
 </head>
 <body>
@@ -21,8 +20,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. -->
-<link href="style.css" rel="stylesheet">
-<script src="script.js"></script>
+<link href="startscreen.css" rel="stylesheet">
 </script>
 
 <body>
@@ -41,13 +39,27 @@ limitations under the License. -->
       </div>
       <div class="play-button">
         <button id="start-game" class="mdc-button mdc-button--raised">
-          <a href="./play.html">START GAME</a>
+          <a href="play.html?greeting=hello">go to second page</a>
         </button>
       </div>
     </div>
+
+
   </section>
-<!-- partial -->
-  <script type="module" src="./script.js"></script>
+<script>
+  function startGame() {
+    // Get the input values
+    const playerOneName = document.getElementById('player-one-name').value;
+    const playerTwoName = document.getElementById('player-two-name').value;
+
+    // Encode the values as URL parameters
+    const playerOneParam = encodeURIComponent(playerOneName);
+    const playerTwoParam = encodeURIComponent(playerTwoName);
+
+    // Redirect to play.html with the input values as URL parameters
+    window.location.href = `play.html?playerOne=${playerOneName}&playerTwo=${playerTwoName}`;
+  }
+</script>
 
 </body>
 </html>

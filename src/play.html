@@ -27,6 +27,12 @@ limitations under the License. -->
 
 <body>
   <section id="demos" class="invisible">
+    <div id="player-info" class="player-info">
+        <!-- Player 1 name -->
+        <div id="player-one-info" class="player-info-item"></div>
+        <!-- Player 2 name -->
+        <div id="player-two-info" class="player-info-item"></div>
+      </div>
     <div id="liveView" class="videoView">
       <button id="webcamButton" class="mdc-button mdc-button--raised">
         <span class="mdc-button__label">ENABLE WEBCAM</span>
@@ -39,6 +45,23 @@ limitations under the License. -->
   </section>
 <!-- partial -->
   <script type="module" src="./script.js"></script>
+  <script>
+    // Function to extract parameters from the URL
+    function getParameterByName(name, url) {
+      console.log(name);
+      console.log(url);
+    }
 
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log("here", window.location.search);
+
+    // Extract playerOne and playerTwo parameters from the URL
+    const playerOne = getParameterByName('playerOne', window.location.href);
+    const playerTwo = getParameterByName('playerTwo', window.location.href);
+
+    // Update the HTML content to display playerOne and playerTwo names
+    document.getElementById('player-one-info').innerText = "Player 1: " + playerOne;
+    document.getElementById('player-two-info').innerText = "Player 2: " + playerTwo;
+  </script>
 </body>
 </html>

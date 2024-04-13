@@ -12,13 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License. */
 
-@use "@material";
 body {
-  font-family: roboto;
-  margin: 2em;
-  color: #3d3d3d;
-  --mdc-theme-primary: #007f8b;
-  --mdc-theme-on-primary: #f1f3f4;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
 h1 {
@@ -145,4 +145,51 @@ footer {
 
 .play-button {
   margin-top: 240px;
+}
+
+/* Add custom styles for the "FIGHT" text */
+.a {
+  font-family: 'Teko', sans-serif;
+  font-size: 36px;
+  color: white;
+  text-transform: uppercase;
+}
+
+/* Add hover effect for the button */
+.play-button button:hover .fight-text {
+  transform: scale(1.1);
+}
+
+/* Add floating animation using keyframes */
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Apply floating animation to the button */
+.play-button button {
+  animation: floatAnimation 3s infinite;
+}
+
+.top-left-text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 18px;
+}
+
+.top-right-text {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 18px;
 }
